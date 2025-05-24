@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bws3sq6knvl7y"]
+
+[ext_resource type="PackedScene" uid="uid://dkryeyh5i5frj" path="res://scences/player_paddle.tscn" id="1_edu4y"]
+[ext_resource type="PackedScene" uid="uid://dhg6vytm2w3oq" path="res://scences/air_wall.tscn" id="2_n47xw"]
+
+[node name="Main" type="Node2D"]
+
+[node name="PlayerPaddle" parent="." instance=ExtResource("1_edu4y")]
+position = Vector2(-502, 7)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AirWall" type="Node" parent="."]
+
+[node name="DownAirWall" parent="AirWall" instance=ExtResource("2_n47xw")]
+position = Vector2(1, 324.5)
+
+[node name="UpAirWall" parent="AirWall" instance=ExtResource("2_n47xw")]
+position = Vector2(0, -324.5)
