@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhg6vytm2w3oq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v55f6"]
-size = Vector2(1280, 1)
+size = Vector2(640, 1)
 
 [node name="AirWall" type="StaticBody2D"]
 
