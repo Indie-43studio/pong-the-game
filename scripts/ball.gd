@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-@export var speed: float = 400.0
+@export var speed: float = 300.0
 var screen_size: Vector2
-signal screen_exited_left
-signal screen_exited_right
+var max_bounce_angle = deg_to_rad(80)
 func _ready():
 	velocity = Vector2.LEFT.rotated(randf_range(-0.25, 0.25)) * speed
 	screen_size = get_viewport_rect().size
@@ -16,16 +15,15 @@ func _physics_process(delta):
 
 		if collider.is_in_group("paddle"):
 			var offset_y = global_position.y - collider.global_position.y
-			var normalized_offset = offset_y / (collider.get_node("CollisionShape2D").shape.extents.y)
-			velocity.x = -velocity.x 
+			var normalized_offset = offset_y / (collider.get_node("CollisionShape2D").shape.height/2)
+			var new_angle = normalized_offset * max_bounce_angle
 			speed+=10
-			velocity.y = normalized_offset * speed
+			velocity = Vector2(-sign(velocity.x) * cos(new_angle), sin(new_angle)).normalized() * speed
 		else:
 			velocity = velocity.bounce(collision.get_normal())
 
-		velocity = velocity.normalized() * speed
-func _on_visible_on_screen_notifier_2d_screen_exited():
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	if position.x < (screen_size.x/2):
-		screen_exited_left.emit()
+		GameManager.score_point("player_right")
 	else:
-		screen_exited_right.emit()
+		GameManager.score_point("player_left")

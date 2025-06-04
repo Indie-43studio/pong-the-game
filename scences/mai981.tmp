@@ -19,14 +19,10 @@ position = Vector2(0, 180)
 position = Vector2(0, -180)
 
 [node name="Ball" parent="." instance=ExtResource("3_xke0l")]
-position = Vector2(29, 0)
-scale = Vector2(1, 1.02589)
-speed = 300.0
+position = Vector2(28, 0)
+motion_mode = 1
+speed = 350.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Ui" parent="." instance=ExtResource("4_fyhcn")]
-
-[node name="AirWall2" parent="." instance=ExtResource("2_n47xw")]
-position = Vector2(316, 0)
-rotation = 1.5708
