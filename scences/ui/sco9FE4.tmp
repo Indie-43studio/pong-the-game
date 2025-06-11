@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7krr8dk80aca"]
+
+[ext_resource type="Script" path="res://scripts/score_board.gd" id="1_7tufi"]
+[ext_resource type="FontFile" uid="uid://chu0xsvgp2jgb" path="res://assets/Silver.ttf" id="1_a2nwe"]
+
+[node name="ScoreBoard" type="Control" node_paths=PackedStringArray("player_left_score_label", "player_right_score_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7tufi")
+player_left_score_label = NodePath("LeftScoreContainer/LeftPlayerScore")
+player_right_score_label = NodePath("RightScoreContainer/RightPlayerScore")
+
+[node name="LeftScoreContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.2
+grow_horizontal = 2
+theme_override_constants/margin_left = 80
+
+[node name="LeftPlayerScore" type="Label" parent="LeftScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_a2nwe")
+theme_override_font_sizes/font_size = 40
+text = "0
+"
+
+[node name="RightScoreContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 80
+
+[node name="RightPlayerScore" type="Label" parent="RightScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_a2nwe")
+theme_override_font_sizes/font_size = 40
+text = "0
+"

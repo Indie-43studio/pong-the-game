@@ -1,23 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq8c3nvpbndyt"]
+[gd_scene load_steps=3 format=3 uid="uid://dq8c3nvpbndyt"]
 
 [ext_resource type="PackedScene" uid="uid://b7krr8dk80aca" path="res://scences/ui/score_board.tscn" id="1_6bovl"]
+[ext_resource type="PackedScene" uid="uid://b7etecvihcxtm" path="res://scences/ui/text_display.tscn" id="2_2jw20"]
 
 [node name="Ui" type="CanvasLayer"]
 
 [node name="ScoreBoard" parent="." instance=ExtResource("1_6bovl")]
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextDisplay" parent="." instance=ExtResource("2_2jw20")]

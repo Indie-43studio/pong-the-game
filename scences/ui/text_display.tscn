@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7etecvihcxtm"]
+
+[ext_resource type="FontFile" uid="uid://chu0xsvgp2jgb" path="res://assets/Silver.ttf" id="1_eime8"]
+[ext_resource type="Script" path="res://scripts/text_display.gd" id="1_ihrwx"]
+
+[node name="TextDisplay" type="Control" node_paths=PackedStringArray("player_left_win", "player_right_win", "description")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ihrwx")
+player_left_win = NodePath("player_left_win")
+player_right_win = NodePath("player_right_win")
+description = NodePath("Description")
+
+[node name="player_left_win" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.45
+anchor_right = 1.0
+anchor_bottom = 0.45
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_eime8")
+theme_override_font_sizes/font_size = 72
+text = "player left win!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player_right_win" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.45
+anchor_right = 1.0
+anchor_bottom = 0.45
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("1_eime8")
+theme_override_font_sizes/font_size = 72
+text = "player right win!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = -94.0
+offset_top = -17.0
+offset_right = 94.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_eime8")
+theme_override_font_sizes/font_size = 48
+text = "Press [ESC] to leave."

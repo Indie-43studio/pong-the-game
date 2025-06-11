@@ -9,7 +9,6 @@ radius = 4.0
 [node name="Ball" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_hle8g")
-speed = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bj6jn")
@@ -20,5 +19,8 @@ shape = SubResource("CircleShape2D_41b1i")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(2.38419e-07, 2.38419e-07)
 scale = Vector2(0.4, 0.4)
+
+[node name="ServeTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

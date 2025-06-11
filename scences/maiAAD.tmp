@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bws3sq6knvl7y"]
+
+[ext_resource type="PackedScene" uid="uid://dkryeyh5i5frj" path="res://scences/objects/player_paddle.tscn" id="1_edu4y"]
+[ext_resource type="PackedScene" uid="uid://dhg6vytm2w3oq" path="res://scences/objects/air_wall.tscn" id="2_n47xw"]
+[ext_resource type="PackedScene" uid="uid://dnlw84ctrngfg" path="res://scences/objects/ball.tscn" id="3_xke0l"]
+[ext_resource type="PackedScene" uid="uid://dq8c3nvpbndyt" path="res://scences/ui/ui.tscn" id="4_fyhcn"]
+
+[node name="Main" type="Node2D"]
+
+[node name="PlayerPaddle" parent="." instance=ExtResource("1_edu4y")]
+position = Vector2(-280, 0)
+
+[node name="AirWall" type="Node" parent="."]
+
+[node name="DownAirWall" parent="AirWall" instance=ExtResource("2_n47xw")]
+position = Vector2(0, 180)
+
+[node name="UpAirWall" parent="AirWall" instance=ExtResource("2_n47xw")]
+position = Vector2(0, -180)
+
+[node name="Ball" parent="." instance=ExtResource("3_xke0l")]
+position = Vector2(29, 0)
+scale = Vector2(1, 1.02589)
+speed = 500.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Ui" parent="." instance=ExtResource("4_fyhcn")]
+
+[node name="AirWall2" parent="." instance=ExtResource("2_n47xw")]
+position = Vector2(316, 0)
+rotation = 1.5708
