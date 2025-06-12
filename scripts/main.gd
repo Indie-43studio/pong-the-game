@@ -10,6 +10,7 @@ func _ready() -> void:
 	if GameManager:
 		var ball_instance = ball_scene.instantiate()
 		game_object.add_child(ball_instance)
+		ball_instance.global_position = Vector2.ZERO
 
 		var left_player_paddle_instance = left_player_paddle_scene.instantiate()
 		game_object.add_child(left_player_paddle_instance)

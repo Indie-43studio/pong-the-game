@@ -1,19 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkryeyh5i5frj"]
+[gd_scene load_steps=6 format=3 uid="uid://dkryeyh5i5frj"]
 
 [ext_resource type="Script" path="res://scripts/player_paddle_left.gd" id="1_8advi"]
-[ext_resource type="Texture2D" uid="uid://bunm03wvasd7l" path="res://assets/sprite/paddle.png" id="2_cvk56"]
+[ext_resource type="Texture2D" uid="uid://yhp244m8fmvg" path="res://assets/sprite/paddle.png" id="2_ckb48"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_750f7"]
 radius = 4.0
 height = 64.5
 
+[sub_resource type="Shader" id="Shader_g8yt3"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 grow_color: source_color = vec4(1.0);
+uniform float glow_power: hint_range(0.0, 8.0, 0.1) = 2.0;
+uniform float glow_shift: hint_range(0.0, 10.0, 0.1) = 1.0;
+uniform float glow_radius: hint_range(1.0, 10.0, 0.1) = 1.0;
+
+void fragment() {
+	vec4 glow = vec4(0.0);
+	float count = 0.0;
+	for (float x = -glow_radius; x <= glow_radius; x+= 1.0) {
+		for (float y = -glow_radius; y <= glow_radius; y+= 1.0) {
+			vec2 offset = vec2(x, y)  * glow_shift * TEXTURE_PIXEL_SIZE;
+			glow += texture(TEXTURE, UV + offset) * grow_color;
+			count += 1.0;
+		}
+	}
+	glow *= glow_power / count;
+	COLOR = mix(texture(TEXTURE, UV), glow, glow.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bx35k"]
+shader = SubResource("Shader_g8yt3")
+shader_parameter/grow_color = Color(0.305882, 0.658824, 0.870588, 1)
+shader_parameter/glow_power = 1.1
+shader_parameter/glow_shift = 1.0
+shader_parameter/glow_radius = 1.0
+
 [node name="PlayerPaddleLeft" type="CharacterBody2D" groups=["paddle"]]
 motion_mode = 1
 script = ExtResource("1_8advi")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_cvk56")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 0.990806)
 shape = SubResource("CapsuleShape2D_750f7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.305882, 0.658824, 0.870588, 1)
+material = SubResource("ShaderMaterial_bx35k")
+texture = ExtResource("2_ckb48")

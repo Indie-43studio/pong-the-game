@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bws3sq6knvl7y"]
+[gd_scene load_steps=9 format=3 uid="uid://bws3sq6knvl7y"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_8qitg"]
 [ext_resource type="PackedScene" uid="uid://dkryeyh5i5frj" path="res://scences/objects/player_paddle_left.tscn" id="1_edu4y"]
@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://dq8c3nvpbndyt" path="res://scences/ui/ui.tscn" id="4_fyhcn"]
 [ext_resource type="PackedScene" uid="uid://d16spsx20vujg" path="res://scences/objects/player_paddle_ai.tscn" id="4_rs7m6"]
 [ext_resource type="PackedScene" uid="uid://cv03xnbc765it" path="res://scences/objects/player_paddle_right.tscn" id="5_yslvj"]
+
+[sub_resource type="Environment" id="Environment_d612k"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.2
+glow_strength = 1.1
+glow_blend_mode = 0
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("game_object")]
 script = ExtResource("1_8qitg")
@@ -29,3 +36,87 @@ position = Vector2(0, -180)
 [node name="Ui" parent="." instance=ExtResource("4_fyhcn")]
 
 [node name="GameObject" type="Node2D" parent="."]
+
+[node name="Background" type="CanvasLayer" parent="GameObject"]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="GameObject/Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101961, 0.113725, 0.180392, 1)
+
+[node name="Middle line" type="ColorRect" parent="GameObject/Background"]
+custom_minimum_size = Vector2(8, 40)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 40.0
+grow_horizontal = 2
+color = Color(1, 1, 1, 0.5)
+
+[node name="Middle line2" type="ColorRect" parent="GameObject/Background"]
+custom_minimum_size = Vector2(8, 40)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.275
+anchor_right = 0.5
+anchor_bottom = 0.275
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 4.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.5)
+
+[node name="Middle line3" type="ColorRect" parent="GameObject/Background"]
+custom_minimum_size = Vector2(8, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 4.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.5)
+
+[node name="Middle line4" type="ColorRect" parent="GameObject/Background"]
+custom_minimum_size = Vector2(8, 40)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.725
+anchor_right = 0.5
+anchor_bottom = 0.725
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 4.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.5)
+
+[node name="Middle line5" type="ColorRect" parent="GameObject/Background"]
+custom_minimum_size = Vector2(8, 40)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -40.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 1, 0.5)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d612k")

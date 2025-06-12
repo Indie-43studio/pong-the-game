@@ -1,15 +1,41 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnlw84ctrngfg"]
+[gd_scene load_steps=14 format=3 uid="uid://dnlw84ctrngfg"]
 
-[ext_resource type="Texture2D" uid="uid://ydbcq8wbxipb" path="res://assets/sprite/ball.png" id="1_bj6jn"]
 [ext_resource type="Script" path="res://scripts/ball.gd" id="1_hle8g"]
 [ext_resource type="AudioStream" uid="uid://dwkjpiqcatra8" path="res://assets/audio/HitPaddle.wav" id="2_dlbl1"]
 [ext_resource type="AudioStream" uid="uid://2qavnje1i5j3" path="res://assets/audio/HitWall.wav" id="3_6h231"]
 [ext_resource type="AudioStream" uid="uid://poallltrru1d" path="res://assets/audio/Score.wav" id="4_eegti"]
 [ext_resource type="AudioStream" uid="uid://c2lb6kfswhg1" path="res://assets/audio/Serve.wav" id="5_3bpv4"]
 [ext_resource type="AudioStream" uid="uid://dtyjb158a30aa" path="res://assets/audio/EndGame.wav" id="6_tdxmm"]
+[ext_resource type="Texture2D" uid="uid://d3uadtruh8o5y" path="res://assets/sprite/ball.png" id="7_hq2cn"]
+[ext_resource type="Shader" path="res://assets/glow.gdshader" id="7_ryg68"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_41b1i"]
 radius = 4.0
+
+[sub_resource type="Curve" id="Curve_uxkdh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tkk1u"]
+curve = SubResource("Curve_uxkdh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rg6pf"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 2, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_tkk1u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfjjn"]
+shader = ExtResource("7_ryg68")
+shader_parameter/grow_color = Color(1, 0.462, 0.208, 0.824)
+shader_parameter/glow_power = 1.5
+shader_parameter/glow_shift = 0.0
+shader_parameter/glow_radius = 1.0
 
 [node name="Ball" type="CharacterBody2D"]
 motion_mode = 1
@@ -20,9 +46,6 @@ score = ExtResource("4_eegti")
 serve = ExtResource("5_3bpv4")
 game_end = ExtResource("6_tdxmm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bj6jn")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_41b1i")
 
@@ -31,5 +54,18 @@ position = Vector2(2.38419e-07, 2.38419e-07)
 scale = Vector2(0.4, 0.4)
 
 [node name="BallAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+self_modulate = Color(0.969, 0.498, 0, 0.79)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_rg6pf")
+lifetime = 0.5
+randomness = 0.3
+trail_lifetime = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.968627, 0.498039, 0, 1)
+material = SubResource("ShaderMaterial_nfjjn")
+texture = ExtResource("7_hq2cn")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

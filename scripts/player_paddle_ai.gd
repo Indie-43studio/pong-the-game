@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var deadzone: float = 20.0
 @export var tracking_offset: float = randf_range(-30, 30)
 var ball: Node2D
+var fixed_x_position: float = 290.0
+
 
 func _ready():
 	var balls = get_tree().get_nodes_in_group("ball")
@@ -23,3 +25,4 @@ func _physics_process(delta):
 		velocity.y = 0
 	
 	move_and_slide()
+	position.x = fixed_x_position

@@ -1,19 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv03xnbc765it"]
+[gd_scene load_steps=6 format=3 uid="uid://cv03xnbc765it"]
 
 [ext_resource type="Script" path="res://scripts/player_paddle_right.gd" id="1_a1op6"]
-[ext_resource type="Texture2D" uid="uid://bunm03wvasd7l" path="res://assets/sprite/paddle.png" id="2_b7dvp"]
+[ext_resource type="Shader" path="res://assets/glow.gdshader" id="2_nhb3k"]
+[ext_resource type="Texture2D" uid="uid://yhp244m8fmvg" path="res://assets/sprite/paddle.png" id="2_pkw56"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_750f7"]
 radius = 4.0
 height = 64.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ijkb"]
+shader = ExtResource("2_nhb3k")
+shader_parameter/grow_color = Color(0.902, 0.224, 0.275, 1)
+shader_parameter/glow_power = 1.1
+shader_parameter/glow_shift = 1.0
+shader_parameter/glow_radius = 1.0
+
 [node name="PlayerPaddleright" type="CharacterBody2D" groups=["paddle"]]
 motion_mode = 1
 script = ExtResource("1_a1op6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_b7dvp")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 0.990806)
 shape = SubResource("CapsuleShape2D_750f7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.901961, 0.223529, 0.27451, 1)
+material = SubResource("ShaderMaterial_4ijkb")
+texture = ExtResource("2_pkw56")
