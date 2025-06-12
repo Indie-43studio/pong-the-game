@@ -1,5 +1,7 @@
 # Pong the Game
-這是我在 20 Game Challanges 裡使用 Godot 引擎仿造 PONG 開發的小遊戲。可以與 AI 對手對戰，或是使用同一台裝置雙人遊玩。
+這是我在 20 Game Challanges 裡使用 Godot4.3 引擎仿造 PONG 開發的小遊戲。此專案旨在展現基礎遊戲開發能力，並進一步探索 Godot 引擎的進階特性，如自定義 Shader、粒子系統和 UI 主題設計，以提升遊戲的視覺質感和使用者體驗。
+
+
 
 ### 特點：
 * **單人對戰 AI：** 與適應性 AI 對手進行遊戲。
