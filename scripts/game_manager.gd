@@ -4,10 +4,12 @@ var left_player_score:int = 0
 var right_player_score:int = 0
 var is_game_over:bool = false
 var current_game_mode: String = "AI"
-@export var main_menu_scene_path: String = "res://scences/ui/menu.tscn"
+var main_menu_scene_path: String = "res://scences/ui/menu.tscn"
+
 signal point_change
 signal ready_serve
 signal game_over
+signal game_pause
 
 func _ready() -> void:
 	current_game_mode = "AI" 
@@ -42,3 +44,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			left_player_score = 0
 			right_player_score = 0
 			get_tree().change_scene_to_file(main_menu_scene_path)
+		else:
+			game_pause.emit()
+			

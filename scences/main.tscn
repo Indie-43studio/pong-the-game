@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bws3sq6knvl7y"]
+[gd_scene load_steps=11 format=3 uid="uid://bws3sq6knvl7y"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_8qitg"]
 [ext_resource type="PackedScene" uid="uid://dkryeyh5i5frj" path="res://scences/objects/player_paddle_left.tscn" id="1_edu4y"]
 [ext_resource type="PackedScene" uid="uid://dhg6vytm2w3oq" path="res://scences/objects/air_wall.tscn" id="2_n47xw"]
 [ext_resource type="PackedScene" uid="uid://dnlw84ctrngfg" path="res://scences/objects/ball.tscn" id="3_xke0l"]
-[ext_resource type="PackedScene" uid="uid://dq8c3nvpbndyt" path="res://scences/ui/ui.tscn" id="4_fyhcn"]
 [ext_resource type="PackedScene" uid="uid://d16spsx20vujg" path="res://scences/objects/player_paddle_ai.tscn" id="4_rs7m6"]
 [ext_resource type="PackedScene" uid="uid://cv03xnbc765it" path="res://scences/objects/player_paddle_right.tscn" id="5_yslvj"]
+[ext_resource type="PackedScene" uid="uid://b7krr8dk80aca" path="res://scences/ui/score_board.tscn" id="7_ijkwj"]
+[ext_resource type="PackedScene" uid="uid://b7etecvihcxtm" path="res://scences/ui/text_display.tscn" id="8_42xah"]
+[ext_resource type="PackedScene" uid="uid://cigdpuuthf4i" path="res://scences/ui/pause.tscn" id="9_gxo8k"]
 
 [sub_resource type="Environment" id="Environment_d612k"]
 background_mode = 3
@@ -15,13 +17,14 @@ glow_intensity = 1.2
 glow_strength = 1.1
 glow_blend_mode = 0
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("game_object")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("game_object", "pause_menu")]
 script = ExtResource("1_8qitg")
 ball_scene = ExtResource("3_xke0l")
 left_player_paddle_scene = ExtResource("1_edu4y")
 ai_paddle_scene = ExtResource("4_rs7m6")
 right_player_paddle_scene = ExtResource("5_yslvj")
 game_object = NodePath("GameObject")
+pause_menu = NodePath("Ui/Pause")
 
 [node name="AirWall" type="Node" parent="."]
 
@@ -33,14 +36,12 @@ position = Vector2(0, -180)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Ui" parent="." instance=ExtResource("4_fyhcn")]
-
 [node name="GameObject" type="Node2D" parent="."]
 
-[node name="Background" type="CanvasLayer" parent="GameObject"]
+[node name="Background" type="CanvasLayer" parent="."]
 layer = -2
 
-[node name="ColorRect" type="ColorRect" parent="GameObject/Background"]
+[node name="ColorRect" type="ColorRect" parent="Background"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,7 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.101961, 0.113725, 0.180392, 1)
 
-[node name="Middle line" type="ColorRect" parent="GameObject/Background"]
+[node name="Middle line" type="ColorRect" parent="Background"]
 custom_minimum_size = Vector2(8, 40)
 anchors_preset = 5
 anchor_left = 0.5
@@ -59,7 +60,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 color = Color(1, 1, 1, 0.5)
 
-[node name="Middle line2" type="ColorRect" parent="GameObject/Background"]
+[node name="Middle line2" type="ColorRect" parent="Background"]
 custom_minimum_size = Vector2(8, 40)
 anchors_preset = -1
 anchor_left = 0.5
@@ -74,7 +75,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.5)
 
-[node name="Middle line3" type="ColorRect" parent="GameObject/Background"]
+[node name="Middle line3" type="ColorRect" parent="Background"]
 custom_minimum_size = Vector2(8, 40)
 anchors_preset = 8
 anchor_left = 0.5
@@ -89,7 +90,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.5)
 
-[node name="Middle line4" type="ColorRect" parent="GameObject/Background"]
+[node name="Middle line4" type="ColorRect" parent="Background"]
 custom_minimum_size = Vector2(8, 40)
 anchors_preset = -1
 anchor_left = 0.5
@@ -104,7 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.5)
 
-[node name="Middle line5" type="ColorRect" parent="GameObject/Background"]
+[node name="Middle line5" type="ColorRect" parent="Background"]
 custom_minimum_size = Vector2(8, 40)
 anchors_preset = 7
 anchor_left = 0.5
@@ -117,6 +118,14 @@ offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(1, 1, 1, 0.5)
+
+[node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="ScoreBoard" parent="Ui" instance=ExtResource("7_ijkwj")]
+
+[node name="TextDisplay" parent="Ui" instance=ExtResource("8_42xah")]
+
+[node name="Pause" parent="Ui" instance=ExtResource("9_gxo8k")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_d612k")

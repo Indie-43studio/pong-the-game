@@ -5,9 +5,9 @@ extends Control
 @export var description: Label
 
 func _ready() -> void:
-		GameManager.connect("game_over" , game_over)
+		GameManager.connect("game_over" , _game_over)
 
-func game_over(winning_player : String):
+func _game_over(winning_player : String):
 	if winning_player == "player_left":
 		player_left_win.show()
 		description.show()

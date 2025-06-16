@@ -12,7 +12,7 @@ func _ready():
 	if balls.size() > 0:
 		ball = balls[0]
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if ball == null:
 		return
 	

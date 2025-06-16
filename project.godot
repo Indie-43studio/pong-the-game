@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="pong"
-run/main_scene="res://scences/main.tscn"
+run/main_scene="res://scences/ui/menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 

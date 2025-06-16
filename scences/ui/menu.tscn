@@ -12,7 +12,7 @@ script = ExtResource("1_ue81p")
 audio_player = NodePath("AudioStreamPlayer")
 choose_game_mode = NodePath("Window")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,7 +42,7 @@ theme_override_styles/hover_pressed = ExtResource("3_3acvh")
 theme_override_styles/hover = ExtResource("4_kvjel")
 theme_override_styles/pressed = ExtResource("3_3acvh")
 theme_override_styles/normal = ExtResource("3_xwrcf")
-text = "start"
+text = "Start"
 icon_alignment = 1
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
@@ -84,6 +84,7 @@ initial_position = 2
 size = Vector2i(300, 200)
 visible = false
 popup_window = true
+theme_override_constants/title_height = 22
 theme_override_fonts/title_font = ExtResource("1_wdx84")
 theme_override_font_sizes/title_font_size = 32
 
