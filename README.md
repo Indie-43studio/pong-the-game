@@ -1,5 +1,5 @@
 # Pong the Game
-這是我在 20 Game Challanges 裡使用 Godot4.3 引擎仿造 PONG 開發的小遊戲。此專案旨在展現基礎遊戲開發能力，並進一步探索 Godot 引擎的進階特性，如自定義 Shader、粒子系統和 UI 主題設計，以提升遊戲的視覺質感和使用者體驗。
+這是我在 20 Game Challanges (https://20_games_challenge.gitlab.io/) 裡使用 Godot4.3 引擎仿造 PONG 開發的小遊戲。此專案旨在展現基礎遊戲開發能力，並進一步探索 Godot 引擎的進階特性，如自定義 Shader、粒子系統和 UI 主題設計，以提升遊戲的視覺質感和使用者體驗。
 
 ![遊戲展示](assets/sprite/pong.gif)
 
@@ -11,10 +11,8 @@
 * **主選單：** 直觀的主選單，可選擇遊戲模式。
 
 ### 如何遊玩：
-
-1.  **下載/克隆倉庫：** `git clone https://github.com/Indie-43studio/pong-the-game.git`
-2.  **在 Godot 引擎中打開：** 將專案導入 Godot 引擎 (建議使用 v4.3以上)。
-3.  **運行專案：** 按下 F5 啟動遊戲。
+點擊連結即可遊玩:
+https://43studio.itch.io/pong
 
 ### 控制方式：
 
