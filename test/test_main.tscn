@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d30x4pdc4ae7n"]
+
+[ext_resource type="PackedScene" uid="uid://dhg6vytm2w3oq" path="res://scences/objects/air_wall.tscn" id="1_3ew8y"]
+[ext_resource type="PackedScene" uid="uid://bgdddxqgo8ty2" path="res://scences/objects/player_paddle_lefta.tscn" id="2_mxf8p"]
+[ext_resource type="PackedScene" uid="uid://dnlw84ctrngfg" path="res://scences/objects/ball.tscn" id="3_5snvc"]
+
+[node name="TestMain" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AirWall" parent="." instance=ExtResource("1_3ew8y")]
+position = Vector2(0, 180)
+
+[node name="AirWall2" parent="." instance=ExtResource("1_3ew8y")]
+position = Vector2(0, -180)
+
+[node name="Ball" parent="." instance=ExtResource("3_5snvc")]
+position = Vector2(-21, 7)
+
+[node name="PlayerPaddleLeft2" parent="." instance=ExtResource("2_mxf8p")]
+position = Vector2(248, 2)
+
+[node name="PlayerPaddleLeft" parent="." instance=ExtResource("2_mxf8p")]
+position = Vector2(-258, 4)
