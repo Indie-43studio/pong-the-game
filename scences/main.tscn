@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bws3sq6knvl7y"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_8qitg"]
-[ext_resource type="PackedScene" uid="uid://dkryeyh5i5frj" path="res://scences/objects/player_paddle_left.tscn" id="1_edu4y"]
 [ext_resource type="PackedScene" uid="uid://dhg6vytm2w3oq" path="res://scences/objects/air_wall.tscn" id="2_n47xw"]
+[ext_resource type="PackedScene" uid="uid://bgdddxqgo8ty2" path="res://scences/objects/player_paddle_lefta.tscn" id="3_n05vk"]
 [ext_resource type="PackedScene" uid="uid://dnlw84ctrngfg" path="res://scences/objects/ball.tscn" id="3_xke0l"]
 [ext_resource type="PackedScene" uid="uid://d16spsx20vujg" path="res://scences/objects/player_paddle_ai.tscn" id="4_rs7m6"]
 [ext_resource type="PackedScene" uid="uid://cv03xnbc765it" path="res://scences/objects/player_paddle_right.tscn" id="5_yslvj"]
@@ -20,7 +20,7 @@ glow_blend_mode = 0
 [node name="Main" type="Node2D" node_paths=PackedStringArray("game_object", "pause_menu")]
 script = ExtResource("1_8qitg")
 ball_scene = ExtResource("3_xke0l")
-left_player_paddle_scene = ExtResource("1_edu4y")
+left_player_paddle_scene = ExtResource("3_n05vk")
 ai_paddle_scene = ExtResource("4_rs7m6")
 right_player_paddle_scene = ExtResource("5_yslvj")
 game_object = NodePath("GameObject")

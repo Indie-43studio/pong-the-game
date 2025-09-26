@@ -8,4 +8,5 @@ func _physics_process(_delta: float) -> void:
 	var direction: Vector2 = Vector2(0, vertical_input)
 	velocity = direction * speed
 	move_and_slide()
-	position.x = fixed_x_position
+	if global_position.x != fixed_x_position:
+		print("Out of box")
